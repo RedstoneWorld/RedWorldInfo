@@ -1,0 +1,18 @@
+name: RedWorldInfo
+version: '${minecraft.plugin.version}'
+main: de.redstoneworld.redworldinfo.RedWorldInfo
+authors: [Phoenix616]
+commands:
+   redworldinfo:
+      aliases: [worldinfo]
+      description: Command description.
+      usage: /<command> [off|on|reload]
+      permission: rwm.redworldinfo.use
+      permission-message: You don't have the permission <permission>
+permissions:
+   rwm.redworldinfo.use:
+      description: Gives permission to the plugin command
+      default: op
+   rwm.redworldinfo.reload:
+      description: Gives permission to the plugin command
+      default: op
