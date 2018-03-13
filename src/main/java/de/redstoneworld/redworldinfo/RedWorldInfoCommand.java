@@ -20,15 +20,23 @@ public class RedWorldInfoCommand implements CommandExecutor {
                 sender.sendMessage(ChatColor.YELLOW + "Config reloaded!");
             } else if ("on".equalsIgnoreCase(args[0])) {
                 if (sender instanceof Player) {
-                    plugin.enableBar((Player) sender);
-                    plugin.sendMessage(sender, "bar-enabled");
+                    if (plugin.isVisibleInWorld(((Player) sender).getWorld())) {
+                        plugin.enableBar((Player) sender);
+                        plugin.sendMessage(sender, "bar-enabled");
+                    } else {
+                        plugin.sendMessage(sender, "wrong-world", "world", ((Player) sender).getWorld().getName());
+                    }
                 } else {
                     plugin.sendMessage(sender, "player-command", "input", args[0]);
                 }
             } else if ("off".equalsIgnoreCase(args[0])) {
                 if (sender instanceof Player) {
-                    plugin.disableBar((Player) sender);
-                    plugin.sendMessage(sender, "bar-disabled");
+                    if (plugin.isVisibleInWorld(((Player) sender).getWorld())) {
+                        plugin.disableBar((Player) sender);
+                        plugin.sendMessage(sender, "bar-disabled");
+                    } else {
+                        plugin.sendMessage(sender, "wrong-world", "world", ((Player) sender).getWorld().getName());
+                    }
                 } else {
                     plugin.sendMessage(sender, "player-command", "input", args[0]);
                 }
@@ -38,12 +46,16 @@ public class RedWorldInfoCommand implements CommandExecutor {
             return true;
         }
         if (sender instanceof Player) {
-            if (plugin.hasBarDisabled((Player) sender)) {
-                plugin.enableBar((Player) sender);
-                plugin.sendMessage(sender, "bar-enabled");
+            if (plugin.isVisibleInWorld(((Player) sender).getWorld())) {
+                if (plugin.hasBarDisabled((Player) sender)) {
+                    plugin.enableBar((Player) sender);
+                    plugin.sendMessage(sender, "bar-enabled");
+                } else {
+                    plugin.disableBar((Player) sender);
+                    plugin.sendMessage(sender, "bar-disabled");
+                }
             } else {
-                plugin.disableBar((Player) sender);
-                plugin.sendMessage(sender, "bar-disabled");
+                plugin.sendMessage(sender, "wrong-world", "world", ((Player) sender).getWorld().getName());
             }
             return true;
         } else {
