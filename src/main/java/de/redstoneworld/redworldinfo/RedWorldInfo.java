@@ -154,14 +154,21 @@ public class RedWorldInfo extends JavaPlugin {
     }
     
     private String getTitle(World world) {
-        long worldItem = world.getTime();
-        long time = (long) (worldItem * 3.6 * 1000L);
-        Date date = new Date(6 * 60 * 60 * 1000 + time);
+        String time = barTimeFormat.format(new Date(6 * 60 * 60 * 1000 + (long) (world.getTime() * 3.6 * 1000L)));
+        
+        String weather = "sun";
+        if (world.getThunderDuration() > 0) {
+            weather = "storm";
+        } else if (world.getWeatherDuration() > 0) {
+            weather = "rain";
+        }
+        
         return replace(barText,
                 "world", world.getName(),
-                "time", barTimeFormat.format(date),
+                "time", time,
                 "ticks", String.valueOf(world.getTime()),
-                "fulltime", String.valueOf(world.getFullTime()));
+                "fulltime", String.valueOf(world.getFullTime()),
+                "weather", getLang("weather." + weather));
     }
     
     private double getProgress(World world) {

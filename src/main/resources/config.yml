@@ -1,5 +1,5 @@
 bar:
-  text: "&fUhrzeit: &2%time% &8(%ticks%)"
+  text: "&fWetter: &2%weather% &fUhrzeit: &2%time% &8(%ticks%)"
   time-format: "HH:mm"
   # Color of the bar. See https://hub.spigotmc.org/javadocs/spigot/org/bukkit/boss/BarColor.html
   color: GREEN
@@ -13,6 +13,10 @@ visible-worlds:
 lang:
   bar-enabled: "&8[&2Welt&fInfo&8]&f: &aDisplay aktiviert!"
   bar-disabled: "&8[&2Welt&fInfo&8]&f: &cDisplay deaktiviert!"
+  weather:
+    sun: "Sonne"
+    rain: "Regen"
+    storm: "Sturm"
   wrong-syntax: "&8[&2Welt&fInfo&8]&f: Schreibe: &7/worldinfo <on, off>"
   player-command: "&cBefehl &f%input%&c kann nur von einem Spieler ausgeführt werden!"
-  wrongWorld: "&8[&2Welt&fInfo&8]&f: &7In dieser Welt &cist die Welt-Info Anzeige &4komplett deaktiviert&c."
+  wrong-world: "&8[&2Welt&fInfo&8]&f: &7In dieser Welt &cist die Welt-Info Anzeige &4komplett deaktiviert&c."
