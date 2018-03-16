@@ -159,10 +159,12 @@ public class RedWorldInfo extends JavaPlugin {
         String time = barTimeFormat.format(new Date(6 * 60 * 60 * 1000 + (long) (world.getTime() * 3.6 * 1000L)));
         
         String weather = "sun";
-        if (world.getThunderDuration() > 0) {
-            weather = "storm";
-        } else if (world.getWeatherDuration() > 0) {
-            weather = "rain";
+        if (world.hasStorm()) {
+            if (world.isThundering()) {
+                weather = "storm";
+            } else {
+                weather = "rain";
+            }
         }
         
         return replace(barText,
