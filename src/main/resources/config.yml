@@ -6,6 +6,7 @@ bar:
   # Style of the bar. See https://hub.spigotmc.org/javadocs/spigot/org/bukkit/boss/BarStyle.html
   style: SEGMENTED_12
   update-ticks: 16
+  start-at-midnight: true
 
 visible-worlds:
 - MittlereParzellen_2

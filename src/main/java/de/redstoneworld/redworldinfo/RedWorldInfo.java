@@ -33,6 +33,7 @@ public class RedWorldInfo extends JavaPlugin {
     private Map<UUID, BossBar> playerBars = new HashMap<>();
     private BukkitTask barTask = null;
     private Set<UUID> barDisabled = new HashSet<>();
+    private boolean barStartAtMidnight;
     
     @Override
     public void onEnable() {
@@ -71,6 +72,7 @@ public class RedWorldInfo extends JavaPlugin {
             barStyle = BarStyle.SEGMENTED_12;
         }
         barUpdateTicks = getConfig().getLong("bar.update-ticks");
+        barStartAtMidnight = getConfig().getBoolean("bar.start-at-midnight");
         stopTask();
         startTask();
         for (BossBar bar : playerBars.values()) {
@@ -172,7 +174,12 @@ public class RedWorldInfo extends JavaPlugin {
     }
     
     private double getProgress(World world) {
-        return world.getTime() / 24000D;
+        long time = world.getTime();
+        if (barStartAtMidnight) {
+            time += 6000;
+            time %= 24000;
+        }
+        return time / 24000D;
     }
     
     void sendMessage(CommandSender sender, String key, String... args) {
