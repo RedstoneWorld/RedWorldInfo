@@ -9,10 +9,22 @@ commands:
       usage: /<command> [off|on|reload]
       permission: rwm.redworldinfo.use
       permission-message: You don't have the permission <permission>
+   redseedinfo:
+      aliases: [seed]
+      description: Command description.
+      usage: /<command>
+      permission: rwm.redseedinfo.use
+      permission-message: You don't have the permission <permission>
 permissions:
    rwm.redworldinfo.use:
       description: Gives permission to the plugin command
       default: op
    rwm.redworldinfo.reload:
+      description: Gives permission to the plugin command
+      default: op
+   rwm.redseedinfo.use:
+      description: Gives permission to the plugin command
+      default: op
+   rwm.redseedinfo.reload:
       description: Gives permission to the plugin command
       default: op
