@@ -11,7 +11,7 @@ commands:
       permission-message: You don't have the permission <permission>
    redseedinfo:
       aliases: [seed]
-      description: Command description.
+      description: This command provides more information about the Minecraft world in addition to the world seed.
       usage: /<command>
       permission: rwm.redseedinfo.use
       permission-message: You don't have the permission <permission>
