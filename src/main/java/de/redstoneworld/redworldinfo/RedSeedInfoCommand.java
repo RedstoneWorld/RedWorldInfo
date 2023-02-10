@@ -20,7 +20,7 @@ public class RedSeedInfoCommand implements CommandExecutor {
 	}
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if (sender.hasPermission("rwm.redseedinfo.use")){
+		if (sender.hasPermission("rwm.redseedinfo.use")) {
 			if (args.length > 0) {
 				if ("reload".equalsIgnoreCase(args[0]) && sender.hasPermission("rwm.redseedinfo.reload")) {
 					plugin.loadConfig();
@@ -32,7 +32,7 @@ public class RedSeedInfoCommand implements CommandExecutor {
 			}
 			if (sender instanceof Player) {
 				StringBuilder sb = new StringBuilder();
-				sb.append(plugin.getLang("seed-info", args) + " ");
+				sb.append(plugin.getLang("world-seed", args) + " ");
 				World world = ((Player) sender).getWorld();
 				String infoLang = plugin.getWorldInfos(world.getName(), args);
 				if (infoLang != null) {
@@ -44,9 +44,10 @@ public class RedSeedInfoCommand implements CommandExecutor {
 				}
 				if (plugin.isSeedWorld(world)) {
 					String seed = String.valueOf(world.getSeed());
-					TextComponent message = new TextComponent(ChatColor.GRAY + "Seed: " + ChatColor.DARK_GREEN + seed);
-					message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
-							new Text(plugin.getLang("copy-seed-info"))));
+					TextComponent message = new TextComponent(
+							ChatColor.GRAY + plugin.getLang("seed-prefix") + " " + ChatColor.DARK_GREEN + seed);
+					message.setHoverEvent(
+							new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(plugin.getLang("copy-seed"))));
 					message.setClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, seed));
 					sender.spigot().sendMessage(message);
 				}

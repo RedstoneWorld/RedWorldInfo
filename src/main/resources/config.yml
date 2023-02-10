@@ -23,14 +23,16 @@ lang:
   wrong-world: "&8[&2Welt&fInfo&8]&f: &7In dieser Welt &cist die Welt-Info Anzeige &4komplett deaktiviert&7."
   wrong-seed-syntax: "&8[&2Welt&fInfo&8]&f: Schreibe: &7/seed"
   no-world-seed: "&8[&2Welt&fInfo&8]&f: &7Für diese Welt sind &ckeine Welt-Informationen bekannt&7."
-  seed-info: "&8[&2Welt&fInfo&8]&f: &7Du befindest dich in"
-  copy-seed-info: "&2Seed kopieren"
+  world-seed: "&8[&2Welt&fInfo&8]&f: &7Du befindest dich in"
+  seed-prefix: "Seed:"
+  copy-seed: "&2Seed kopieren"
 
-# Einstellung zur Anzeige bei ausführung des /seed commands
+# Settings for the messages when executing the /seed command
+# The message is set with the placeholder world-seed and the following world settings
 worlds:
    Hauptwelt: "&7einer normal generierten Welt."
    MittlereParzellen_2: "&7der Mittleren Parzellenwelt.\nParzellengröße:&2 300x300 &7Blöcke²\nParzellenabstand:&2 5 &7Blöcke"
    
-# Welten wo der Seed berechnet und ausgegeben werden soll
+# Only for the named worlds will be the seed calculated and sent to the player
 seed-worlds:
 - MittlereParzellen_2
