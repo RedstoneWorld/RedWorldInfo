@@ -31,25 +31,25 @@ public class RedSeedInfoCommand implements CommandExecutor {
 				return true;
 			}
 			if (sender instanceof Player) {
-				StringBuilder sb = new StringBuilder();
-				sb.append(plugin.getLang("world-seed", args) + " ");
+				StringBuilder message = new StringBuilder();
+				message.append(plugin.getLang("world-seed-prefix", args) + " ");
 				World world = ((Player) sender).getWorld();
-				String infoLang = plugin.getWorldInfos(world.getName(), args);
-				if (infoLang != null) {
-					sb.append(infoLang);
-					sender.sendMessage(sb.toString());
+				String worldInfo = plugin.getWorldInfos(world.getName(), args);
+				if (worldInfo != null) {
+					if (worldInfo.contains("%seed%")) {
+						String seed = String.valueOf(world.getSeed());
+						message.append(worldInfo.replace("%seed%", seed));
+						TextComponent hoverMessage = new TextComponent(message.toString());
+						hoverMessage.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(plugin.getLang("copy-seed"))));
+						hoverMessage.setClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, seed));
+						sender.spigot().sendMessage(hoverMessage);
+					} else {
+						message.append(worldInfo);
+						sender.sendMessage(message.toString());
+					}
 				} else {
 					plugin.sendMessage(sender, "no-world-seed");
 					return true;
-				}
-				if (plugin.isSeedWorld(world)) {
-					String seed = String.valueOf(world.getSeed());
-					TextComponent message = new TextComponent(
-							ChatColor.GRAY + plugin.getLang("seed-prefix") + " " + ChatColor.DARK_GREEN + seed);
-					message.setHoverEvent(
-							new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(plugin.getLang("copy-seed"))));
-					message.setClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, seed));
-					sender.spigot().sendMessage(message);
 				}
 				return true;
 			} else {

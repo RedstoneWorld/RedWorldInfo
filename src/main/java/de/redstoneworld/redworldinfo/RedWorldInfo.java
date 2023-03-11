@@ -30,7 +30,6 @@ public class RedWorldInfo extends JavaPlugin {
     private long barUpdateTicks;
     
     private Set<String> visibleWorlds;
-    private Set<String> seedWorlds;
     private Map<UUID, BossBar> playerBars = new HashMap<>();
     private BukkitTask barTask = null;
     private Set<UUID> barDisabled = new HashSet<>();
@@ -49,12 +48,6 @@ public class RedWorldInfo extends JavaPlugin {
         reloadConfig();
         visibleWorlds = new HashSet<>(getConfig().getStringList("visible-worlds"));
         for (String worldName : visibleWorlds) {
-            if (!"*".equals(worldName) && getServer().getWorld(worldName) == null) {
-                getLogger().log(Level.WARNING, "No world found with the name " + worldName + "!");
-            }
-        }
-        seedWorlds = new HashSet<>(getConfig().getStringList("seed-worlds"));
-        for (String worldName : seedWorlds) {
             if (!"*".equals(worldName) && getServer().getWorld(worldName) == null) {
                 getLogger().log(Level.WARNING, "No world found with the name " + worldName + "!");
             }
@@ -212,15 +205,11 @@ public class RedWorldInfo extends JavaPlugin {
     }
     
 	String getWorldInfos(String key, String... args) {
-		String lang = getConfig().getString("worlds." + key, null);
+		String lang = getConfig().getString("seed-worlds." + key, null);
 		if (lang != null) {
 			return ChatColor.translateAlternateColorCodes('&', replace(lang, args));
 		} else {
 			return null;
 		}
-	}
-
-	public boolean isSeedWorld(World world) {
-		return seedWorlds.contains("*") || seedWorlds.contains(world.getName());
 	}
 }
