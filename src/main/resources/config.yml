@@ -29,5 +29,5 @@ lang:
 # Settings for the messages when executing the /seed command
 # The message will be created with the world-seed-prefix. In addition, the placeholder %seed% can be used to output the current seed.
 seed-worlds:
-   Hauptwelt: "&7einer normal generierten Welt.\nSeed: &2%seed%"
-   MittlereParzellen_2: "&7der Mittleren Parzellenwelt.\nParzellengröße:&2 300x300 &7Blöcke²\nParzellenabstand:&2 5 &7Blöcke"
+  Hauptwelt: "&7einer normal generierten Welt.\nSeed: &2%seed%"
+  MittlereParzellen_2: "&7der Mittleren Parzellenwelt.\nParzellengröße:&2 300x300 &7Blöcke²\nParzellenabstand:&2 5 &7Blöcke"
