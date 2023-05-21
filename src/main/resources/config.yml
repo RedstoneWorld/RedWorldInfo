@@ -20,4 +20,14 @@ lang:
     storm: "Sturm"
   wrong-syntax: "&8[&2Welt&fInfo&8]&f: Schreibe: &7/worldinfo <on, off>"
   player-command: "&cBefehl &f%input%&c kann nur von einem Spieler ausgeführt werden!"
-  wrong-world: "&8[&2Welt&fInfo&8]&f: &7In dieser Welt &cist die Welt-Info Anzeige &4komplett deaktiviert&c."
+  wrong-world: "&8[&2Welt&fInfo&8]&f: &7In dieser Welt &cist die Welt-Info Anzeige &4komplett deaktiviert&7."
+  wrong-seed-syntax: "&8[&2Welt&fInfo&8]&f: Schreibe: &7/seed"
+  no-world-seed: "&8[&2Welt&fInfo&8]&f: &7Für diese Welt sind &ckeine Welt-Informationen bekannt&7."
+  world-seed-prefix: "&8[&2Welt&fInfo&8]&f: &7Du befindest dich in"
+  copy-seed: "&2Seed kopieren"
+
+# Settings for the messages when executing the /seed command
+# The message will be created with the world-seed-prefix. In addition, the placeholder %seed% can be used to output the current seed.
+seed-worlds:
+  Hauptwelt: "&7einer normal generierten Welt.\nSeed: &2%seed%"
+  MittlereParzellen_2: "&7der Mittleren Parzellenwelt.\nParzellengröße:&2 300x300 &7Blöcke²\nParzellenabstand:&2 5 &7Blöcke"

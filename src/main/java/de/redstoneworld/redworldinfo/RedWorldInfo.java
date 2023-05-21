@@ -39,6 +39,7 @@ public class RedWorldInfo extends JavaPlugin {
     public void onEnable() {
         loadConfig();
         getCommand("redworldinfo").setExecutor(new RedWorldInfoCommand(this));
+        getCommand("redseedinfo").setExecutor(new RedSeedInfoCommand(this));
         getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
     }
     
@@ -202,4 +203,13 @@ public class RedWorldInfo extends JavaPlugin {
         }
         return text;
     }
+    
+	String getWorldInfos(String key, String... args) {
+		String lang = getConfig().getString("seed-worlds." + key, null);
+		if (lang != null) {
+			return ChatColor.translateAlternateColorCodes('&', replace(lang, args));
+		} else {
+			return null;
+		}
+	}
 }
